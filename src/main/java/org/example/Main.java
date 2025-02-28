@@ -6,11 +6,13 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        String templateToEdit = fileEditor();
-        savePdfToDesktop(templateToEdit, "testcompany1");
+        String companyName = enterCompanyName();
+        String templateToEdit = fileEditor(companyName);
+
+        savePdfToDesktop(templateToEdit, companyName);
     }
 
-    private static String fileEditor() {
+    private static String fileEditor(String companyName) {
         String pathToTemplate = selectTemplate();
         String templateToEdit = getTemplate(pathToTemplate);
 
@@ -22,7 +24,17 @@ public class Main {
 
         String articleNumber = enterArticleNumber();
         templateToEdit = templateToEdit.replace("[XXXXXX]", articleNumber);
+
+        templateToEdit = templateToEdit.replace("[CompanyName]", companyName);
+
+
         return templateToEdit;
+    }
+
+    private static String enterCompanyName() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("enter company name: ");
+        return scanner.nextLine();
     }
 
     private static String enterArticleNumber() {
@@ -75,16 +87,12 @@ public class Main {
     private static String getTemplate(String fileToSelect) {
         try {
             String filePath = "src/main/resources/" + fileToSelect;
-            String fileContent = Files.readString(Paths.get(filePath));
-            return fileContent;
+            return Files.readString(Paths.get(filePath));
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
-
-    // todo replace [Datum] [Tjänstens namn] [XXXXXX]
-
 
     private static void savePdfToDesktop(String modifiedText, String companyName) {
         try {
