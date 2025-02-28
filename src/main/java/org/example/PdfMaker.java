@@ -4,7 +4,6 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 
-import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class PdfMaker {

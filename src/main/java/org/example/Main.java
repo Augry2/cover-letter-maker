@@ -6,16 +6,20 @@ import java.nio.file.Paths;
 public class Main {
     public static void main(String[] args) {
 
-        savePdfToDesktop("softwareDeveloper");
+        savePdfToDesktop("softwareDeveloper","testcompany1");
 
     }
 
-    private static void savePdfToDesktop(String file) {
+    // todo replace [Datum] [Tjänstens namn] [XXXXXX]
+
+
+
+    private static void savePdfToDesktop(String file, String companyName) {
         try {
             String filePath = "src/main/resources/" + file;
             String text = new String(Files.readAllBytes(Paths.get(filePath)));
             PdfMaker pdfMaker = new PdfMaker();
-            pdfMaker.makePdf(text, "test");
+            pdfMaker.makePdf(text, companyName);
         } catch (Exception e) {
             e.printStackTrace();
         }
