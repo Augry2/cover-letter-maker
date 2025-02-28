@@ -2,6 +2,8 @@ package org.example;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Main {
@@ -16,7 +18,7 @@ public class Main {
         String pathToTemplate = selectTemplate();
         String templateToEdit = getTemplate(pathToTemplate);
 
-        String date = enterDate();
+        String date = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         templateToEdit = templateToEdit.replace("[Datum]", date);
 
         String jobTitle = enterJobTitle();
