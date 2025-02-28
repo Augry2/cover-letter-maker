@@ -51,13 +51,6 @@ public class Main {
         return scanner.nextLine();
     }
 
-    // todo error handling so you can only enter in the correct format
-    private static String enterDate() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("enter date: dd/mm/yy: ");
-        return scanner.nextLine();
-    }
-
     private static String selectTemplate() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
