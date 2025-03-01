@@ -3,8 +3,6 @@ package org.example;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -17,6 +15,7 @@ public class Main {
         savePdfToDesktop(templateToEdit, companyName);
     }
 
+    // todo change coding, cant read å ä ö
     private static String fileEditor(String companyName) {
         String pathToTemplate = selectTemplate();
         String templateToEdit = getTemplate(pathToTemplate);
@@ -60,6 +59,7 @@ public class Main {
             System.out.println("select which CV to print:");
             System.out.println("1. software developer");
             System.out.println("2. it tech");
+            System.out.println("3. template");
             int choice = scanner.nextInt();
             scanner.nextLine();
 
@@ -69,8 +69,7 @@ public class Main {
                 case 2:
                     return "itTech";
                 case 3:
-
-                    break;
+                    return "template";
                 case 9:
                     System.out.println("Exiting...");
                     scanner.close();
@@ -82,16 +81,7 @@ public class Main {
         }
     }
 
-//    private static String getTemplate(String fileToSelect) {
-//        try {
-//            String filePath = Paths.get("src", "main", "resources", fileToSelect).toAbsolutePath().toString();
-//            return Files.readString(Paths.get(filePath));
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return null;
-//        }
-//    }
-
+    // todo can find the files from jar but not from intellij
     private static String getTemplate(String fileToSelect) {
         try {
             ClassLoader classLoader = Main.class.getClassLoader();
