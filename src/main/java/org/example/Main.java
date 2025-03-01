@@ -56,6 +56,7 @@ public class Main {
         while (true) {
             System.out.println("select which CV to print:");
             System.out.println("1. software developer");
+            System.out.println("2. it tech");
             int choice = scanner.nextInt();
             scanner.nextLine();
 
@@ -63,8 +64,7 @@ public class Main {
                 case 1:
                     return "softwareDeveloper";
                 case 2:
-
-                    break;
+                    return "itTech";
                 case 3:
 
                     break;
