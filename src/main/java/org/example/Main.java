@@ -1,5 +1,8 @@
 package org.example;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
@@ -79,11 +82,39 @@ public class Main {
         }
     }
 
+//    private static String getTemplate(String fileToSelect) {
+//        try {
+//            String filePath = Paths.get("src", "main", "resources", fileToSelect).toAbsolutePath().toString();
+//            return Files.readString(Paths.get(filePath));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+//    }
+
     private static String getTemplate(String fileToSelect) {
         try {
-            String filePath = "src/main/resources/" + fileToSelect;
-            return Files.readString(Paths.get(filePath));
+            ClassLoader classLoader = Main.class.getClassLoader();
+            String resourcePath = "resources/" + fileToSelect;
+            java.net.URL resource = classLoader.getResource(resourcePath);
+
+            if (resource == null) {
+                System.err.println("Resource not found: " + resourcePath);
+                return null;
+            }
+
+            try (InputStream inputStream = resource.openStream();
+                 BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+                StringBuilder content = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    content.append(line).append(System.lineSeparator());
+                }
+                System.out.println("File read successfully");
+                return content.toString();
+            }
         } catch (Exception e) {
+            System.err.println("An error occurred while reading the file: " + e.getMessage());
             e.printStackTrace();
             return null;
         }

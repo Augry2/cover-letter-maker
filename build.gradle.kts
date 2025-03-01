@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
 group = "org.example"
@@ -18,4 +19,14 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+tasks.withType<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar> {
+    archiveClassifier.set("")
+    manifest {
+        attributes(mapOf("Main-Class" to "org.example.Main"))
+    }
+    from(sourceSets.main.get().resources.srcDirs) {
+        into("resources")
+    }
 }
