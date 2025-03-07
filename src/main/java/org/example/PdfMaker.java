@@ -11,7 +11,7 @@ public class PdfMaker {
     public String makePdf(String text, String companyName) {
         try {
             String userHome = System.getProperty("user.home");
-            String desktopPath = Paths.get(userHome, "Desktop", "August Rydnell Personligt Brev Till " + companyName + ".pdf").toString();
+            String desktopPath = Paths.get(userHome, "coverletters", "Ebba Rydnell Personligt Brev Till " + companyName + ".pdf").toString();
             PdfWriter writer = new PdfWriter(desktopPath);
             PdfDocument pdfDoc = new PdfDocument(writer);
             Document document = new Document(pdfDoc);

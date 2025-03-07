@@ -76,22 +76,22 @@ public class Main {
         Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
         while (true) {
             System.out.println("select which CV to print:");
-            System.out.println("1. software developer");
-            System.out.println("2. it tech");
-            System.out.println("3. support");
+            System.out.println("1. itspecialist");
+            System.out.println("2. ");
+            System.out.println("3. ");
             System.out.println("8. template");
             int choice = scanner.nextInt();
             scanner.nextLine();
 
             switch (choice) {
                 case 1:
-                    return "softwareDeveloper";
+                    return "itspecialist";
                 case 2:
-                    return "itTech";
+                    return "";
                 case 3:
-                    return "support";
+                    return "";
                 case 8:
-                    return "template";
+                    return "";
                 case 9:
                     System.out.println("Exiting...");
                     scanner.close();
