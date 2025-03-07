@@ -44,7 +44,8 @@ public class Main {
     }
 
     private static String enterCompanyName() {
-        Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
+        Scanner scanner = new Scanner(System.in, "Cp850");
+        //Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
         System.out.println("enter company name: ");
         String input = scanner.nextLine();
         return replaceSpecialCharacters(input);
@@ -52,14 +53,14 @@ public class Main {
     }
 
     private static String enterArticleNumber() {
-        Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
+        Scanner scanner = new Scanner(System.in, "Cp850");
         System.out.println("enter article number: ");
         String input = scanner.nextLine();
         return replaceSpecialCharacters(input);
     }
 
     private static String enterJobTitle() {
-        Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
+        Scanner scanner = new Scanner(System.in, "Cp850");
         System.out.println("enter job title: ");
         String input = scanner.nextLine();
         return replaceSpecialCharacters(input);
