@@ -77,7 +77,7 @@ public class Main {
         while (true) {
             System.out.println("select which CV to print:");
             System.out.println("1. itspecialist");
-            System.out.println("2. ");
+            System.out.println("2.");
             System.out.println("3. ");
             System.out.println("8. template");
             int choice = scanner.nextInt();
